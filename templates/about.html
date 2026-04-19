@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}About | {{ business.name }}{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <div class="container about-hero">
+        <div>
+            <p class="section-kicker">About Us</p>
+            <h1>A service-first JCB team focused on dependable ground work.</h1>
+        </div>
+        <p>
+            {{ business.name }} was built to support customers who need practical machine work without delays,
+            miscommunication, or uncertainty on site. We aim to be the team clients call when work needs to move.
+        </p>
+    </div>
+</section>
+
+<section class="container section-spacing split-section">
+    <div class="about-story">
+        <h2>What matters to us</h2>
+        <p>
+            We believe JCB service is more than sending a machine. It means understanding the site requirement,
+            showing up prepared, handling the work safely, and helping the customer keep the project on track.
+        </p>
+        <p>
+            Our work supports residential developments, construction sites, land improvement jobs, and industrial
+            operations that need a reliable partner for earthmoving tasks.
+        </p>
+    </div>
+    <div class="audience-list">
+        <article>
+            <h3>Safety and care</h3>
+            <p>We approach each job with attention to machine handling, site awareness, and responsible execution.</p>
+        </article>
+        <article>
+            <h3>Timely coordination</h3>
+            <p>We keep communication direct so customers know who to call and what to expect from the service.</p>
+        </article>
+        <article>
+            <h3>Work that fits the site</h3>
+            <p>We support different project types and adapt to the actual ground work needed rather than offering one-size-fits-all service.</p>
+        </article>
+    </div>
+</section>
+{% endblock %}
