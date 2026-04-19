@@ -1,9 +1,9 @@
+import os
 from urllib.parse import quote
-
 from flask import Flask, render_template, request, redirect, url_for, flash
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Change this to a secure value
+app.secret_key = os.environ.get('SECRET_KEY', 'dev-key-change-in-production')
 
 BUSINESS_INFO = {
     "name": "Aman Trading JCB Service",
@@ -78,8 +78,7 @@ GALLERY_ITEMS = [
 
 
 def build_whatsapp_link(message=WHATSAPP_MESSAGE):
-    return f"https://wa.me/{BUSINESS_INFO['whatsapp_number']}?text={quote(message)}"
-
+    return f"https://wa.me/{{BUSINESS_INFO['whatsapp_number']}}?text={{quote(message)}}"
 
 @app.context_processor
 def inject_site_data():
@@ -90,26 +89,21 @@ def inject_site_data():
         "whatsapp_link": build_whatsapp_link(),
     }
 
-
 @app.route('/')
 def home():
     return render_template('home.html')
-
 
 @app.route('/services')
 def services():
     return render_template('services.html')
 
-
 @app.route('/gallery')
 def gallery():
     return render_template('gallery.html', gallery_items=GALLERY_ITEMS)
 
-
 @app.route('/about')
 def about():
     return render_template('about.html')
-
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
@@ -126,4 +120,4 @@ def contact():
     return render_template('contact.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
