@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}Contact | {{ business.name }}{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <div class="container">
+        <p class="section-kicker">Contact Us</p>
+        <h1>Tell us what your site needs and we’ll help you move fast.</h1>
+        <p>Reach us by phone, WhatsApp, or the enquiry form below. We keep the process simple and direct.</p>
+    </div>
+</section>
+
+<section class="container section-spacing contact-layout">
+    <form class="contact-form-card" method="post" action="{{ url_for('contact') }}">
+        <h2>Request a callback</h2>
+        <p>Share your name, email, and a short note about the work required.</p>
+
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your full name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+        <label for="message">Project details</label>
+        <textarea id="message" name="message" rows="6" placeholder="Tell us about your location, work type, and preferred timing." required></textarea>
+
+        <button type="submit" class="btn-primary">Send Enquiry</button>
+    </form>
+
+    <aside class="contact-panel">
+        <div class="contact-card emphasis-card">
+            <p class="section-kicker">Fastest Response</p>
+            <h2>Call or WhatsApp us directly</h2>
+            <a class="btn-primary" href="{{ business.phone_href }}">{{ business.phone_display }}</a>
+            <a class="btn-secondary" href="{{ whatsapp_link }}" target="_blank" rel="noopener">Open WhatsApp Chat</a>
+        </div>
+
+        <div class="contact-card">
+            <h3>Business Details</h3>
+            <p><strong>Company:</strong> {{ business.name }}</p>
+            <p><strong>Email:</strong> <a href="mailto:{{ business.email }}">{{ business.email }}</a></p>
+            <p><strong>Coverage:</strong> {{ business.location }}</p>
+            <p><strong>Working Hours:</strong> {{ business.hours }}</p>
+        </div>
+
+        <div class="contact-card">
+            <h3>Best time to contact</h3>
+            <p>For urgent work, calling or WhatsApp is the quickest option. For planned projects, use the form and include the site location and required service.</p>
+        </div>
+    </aside>
+</section>
+{% endblock %}
