@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block title %}Home | {{ business.name }}{% endblock %}
+{% block content %}
+<section class="hero-section">
+    <div class="container hero-grid">
+        <div class="hero-copy">
+            <p class="section-kicker">Professional JCB Service Support</p>
+            <h1>Trusted JCB work for construction sites, land development, and urgent machine support.</h1>
+            <p class="hero-lead">
+                {{ business.name }} helps homeowners, contractors, and industrial clients complete excavation,
+                trenching, loading, leveling, and site-clearing work with dependable machine service.
+            </p>
+            <div class="hero-actions">
+                <a class="btn-primary" href="{{ business.phone_href }}">Call Now</a>
+                <a class="btn-secondary" href="{{ whatsapp_link }}" target="_blank" rel="noopener">WhatsApp Us</a>
+                <a class="text-link" href="{{ url_for('contact') }}">Request a callback</a>
+            </div>
+            <ul class="hero-points">
+                <li>Residential, commercial, and industrial job support</li>
+                <li>Fast response for scheduled and urgent site requirements</li>
+                <li>Experienced operators and well-maintained equipment</li>
+            </ul>
+        </div>
+        <div class="hero-card">
+            <p class="hero-card-label">Why customers call us</p>
+            <h2>Reliable machine support without the confusion.</h2>
+            <div class="stat-grid">
+                <article>
+                    <strong>Multi-sector</strong>
+                    <span>Homes, layouts, roads, industrial sites</span>
+                </article>
+                <article>
+                    <strong>Site-ready</strong>
+                    <span>Excavation, loading, trenching, leveling</span>
+                </article>
+                <article>
+                    <strong>Direct contact</strong>
+                    <span>Phone, WhatsApp, or quick website enquiry</span>
+                </article>
+                <article>
+                    <strong>Service mindset</strong>
+                    <span>Safe work, timely arrival, and clear updates</span>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container section-spacing">
+    <div class="section-heading">
+        <p class="section-kicker">Core Services</p>
+        <h2>Practical machine support for every stage of the job.</h2>
+        <p>From digging and site prep to loading and leveling, we provide JCB services that keep work moving on the ground.</p>
+    </div>
+    <div class="service-card-grid">
+        {% for group in service_groups %}
+            <article class="info-card">
+                <h3>{{ group.title }}</h3>
+                <p>{{ group.description }}</p>
+                <ul class="check-list">
+                    {% for job in group.jobs %}
+                        <li>{{ job }}</li>
+                    {% endfor %}
+                </ul>
+            </article>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="trust-band">
+    <div class="container">
+        <div class="section-heading section-heading-light">
+            <p class="section-kicker">Why Choose Us</p>
+            <h2>Built for customers who need dependable work, not excuses.</h2>
+        </div>
+        <div class="trust-grid">
+            {% for item in trust_highlights %}
+                <article class="trust-item">
+                    <span class="trust-icon">+</span>
+                    <p>{{ item }}</p>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="container section-spacing split-section">
+    <div>
+        <p class="section-kicker">Who We Help</p>
+        <h2>Support for private clients, active contractors, and larger site operations.</h2>
+        <p>
+            We work with plot owners, builders, road and utility teams, warehouses, and industrial project managers
+            who need reliable earthmoving and machine support.
+        </p>
+    </div>
+    <div class="audience-list">
+        <article>
+            <h3>Residential Projects</h3>
+            <p>Plot cleaning, foundation digging, leveling, and access preparation for homes and private land.</p>
+        </article>
+        <article>
+            <h3>Commercial Work</h3>
+            <p>Retail, office, and layout development support with machine-ready service for active site needs.</p>
+        </article>
+        <article>
+            <h3>Industrial Jobs</h3>
+            <p>Heavy-duty support for factories, yards, infrastructure, and larger operational ground work.</p>
+        </article>
+    </div>
+</section>
+{% endblock %}
