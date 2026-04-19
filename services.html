@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}Services | {{ business.name }}{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <div class="container">
+        <p class="section-kicker">Our Services</p>
+        <h1>JCB services designed around real on-site work.</h1>
+        <p>
+            We support customers who need excavation, movement of earth and materials, trenching, clearing,
+            and machine-based site preparation done efficiently and safely.
+        </p>
+    </div>
+</section>
+
+<section class="container section-spacing service-card-grid">
+    {% for group in service_groups %}
+        <article class="service-detail-card">
+            <h2>{{ group.title }}</h2>
+            <p>{{ group.description }}</p>
+            <ul class="check-list">
+                {% for job in group.jobs %}
+                    <li>{{ job }}</li>
+                {% endfor %}
+            </ul>
+            <div class="service-note">
+                <strong>Best for:</strong>
+                <span>Customers who want direct coordination, fast machine support, and dependable job-site execution.</span>
+            </div>
+        </article>
+    {% endfor %}
+</section>
+
+<section class="service-process">
+    <div class="container">
+        <div class="section-heading">
+            <p class="section-kicker">How We Work</p>
+            <h2>Simple communication from first call to site completion.</h2>
+        </div>
+        <div class="process-grid">
+            <article>
+                <span>01</span>
+                <h3>Share your job need</h3>
+                <p>Tell us your site type, work scope, and preferred timing by phone, WhatsApp, or form.</p>
+            </article>
+            <article>
+                <span>02</span>
+                <h3>Confirm site requirement</h3>
+                <p>We align on the machine work needed, location, and expected support for the job.</p>
+            </article>
+            <article>
+                <span>03</span>
+                <h3>Get work moving</h3>
+                <p>Our team arrives prepared to help you complete the site activity efficiently and safely.</p>
+            </article>
+        </div>
+    </div>
+</section>
+{% endblock %}
